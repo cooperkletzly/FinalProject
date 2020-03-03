@@ -1,0 +1,80 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>Software Development Final</title>
+<style>
+h1{
+  background:lightgrey;
+  padding:25px;
+}
+
+ul{
+  background:lightblue;
+  font-size:20px;
+  padding:30px;
+  padding-left:60px;
+}
+.correct{
+  background:lightgreen;
+}
+
+.incorrect{
+  background:pink;
+}
+</style>
+</head>
+<body translate="no">
+<h1>Math Quiz</h1>
+<div>Timer: <span id="theTime">0</span><br> Score: <span id="score">0</span></div>
+<ul id="theProblems">
+<li>2 + 2 <input data-correct="4" /></li>
+<li>2 + 59 <input data-correct="5" /></li>
+<li>2<sup>3</sup> <input data-correct="8" />
+<li>63/7 <input data-correct="9" /></li>
+<li>19(5) <input data-correct="95" /></li>
+<li>3<sup>4</sup> <input data-correct="81" />
+</ul>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.10.1/Sortable.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+<script id="rendered-js">
+console.clear();
+console.log("hello world");
+
+$("input").change(onChange);
+
+setInterval(upTime,1000);
+
+let sortable = new Sortable(theProblems,{
+  
+})
+
+let score = 0
+
+function upTime(){
+  let theTime = Number($("#theTime").text());
+  theTime = theTime + 1;
+  $("#theTime").text(theTime);
+}
+
+function onChange(evt){
+
+  let correct = $(this).data("correct");
+  let response = $(this).val();
+  if(correct==response){
+    console.log("correct")
+    $(this).removeClass("incorrect").addClass("correct");
+    score = score + 1;
+    $("#score").text(score);
+  } else{
+    $(this).removeClass("correct").addClass("incorrect")
+    console.log("incorrect")
+  }
+
+}
+    </script>
+</body>
+</html>
